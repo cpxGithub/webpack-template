@@ -23,10 +23,6 @@ const config = {
       '@': resolve('src'),
     }
   },
-  devServer: { // 配置webpack-dev-server
-    port: 9000,
-    compress: true // 开启gzip
-  },
   module: {
     rules: [
       {
@@ -84,13 +80,26 @@ const config = {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      // name: 'common',
+      // filename: 'common.bundle.js',
+      // minChunks: 2,
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "initial"
+        }
+      }
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
       filename: 'index.html'
     }),
-    new VueLoaderPlugin(), // 添加vue-loader必须的插件
-    new webpack.NamedModulesPlugin() // 开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。
+    new VueLoaderPlugin() // 添加vue-loader必须的插件
   ]
 }
 
