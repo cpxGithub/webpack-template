@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 function resolve(str) {
   return path.resolve(__dirname, '..', str)
@@ -95,6 +96,11 @@ const config = {
     }
   },
   plugins: [
+    new CleanWebpackPlugin([
+      'dist'
+    ], {
+      root: path.join(__dirname, '../')
+    }),
     new HtmlWebpackPlugin({
       template: 'index.html',
       filename: 'index.html'

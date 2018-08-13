@@ -13,18 +13,20 @@ const config = {
   },
   output: {
     path: resolve('dist'),
-    chunkFilename: 'js/[id].[chunkhash].js',
-    filename: 'js/[name].[chunkhash].js'
+    chunkFilename: 'js/[id].js',
+    filename: 'js/[name].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'views': '@/views'
     }
   },
   devServer: { // 配置webpack-dev-server
     port: 9000,
+    hot: true,
     compress: true // 开启gzip
   },
   module: {
@@ -66,21 +68,23 @@ const config = {
           }
         }, 'postcss-loader']
       },
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      //   include: [resolve('src')],
+      //   loader: 'url-loader',
+      //   options: {
+      //     name: '[name][hash:8].[ext]',
+      //     limit: 8192,
+      //     outputPath: 'img'
+      //   }
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        include: [resolve('src')],
         loader: 'url-loader',
+        include: [resolve('src')],
         options: {
-          name: '[name][hash:8].[ext]',
-          limit: 8192,
-          outputPath: 'img'
+          limit: 10000,
+          name: 'img/[name].[hash:8].[ext]'
         }
-        // test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        // loader: 'url-loader',
-        // options: {
-        //   limit: 10000,
-        //   name: 'img/[name].[hash:8].[ext]'
-        // }
       }
     ]
   },
@@ -90,7 +94,8 @@ const config = {
       filename: 'index.html'
     }),
     new VueLoaderPlugin(), // 添加vue-loader必须的插件
-    new webpack.NamedModulesPlugin() // 开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。
+    // new webpack.NamedModulesPlugin(), // 开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
 

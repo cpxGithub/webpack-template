@@ -1,25 +1,17 @@
-// console.log(611611)
-// let a = 11
-// console.log(a)
-// let [b, c] = [55, 66]
-// console.log(b, c)
-// import ig from'./1.jpg'
-// var app = document.getElementById('app')
-// app.innerHTML = `<img src="${ig}" alt="">`
-// import './b.css'
-// import './add.less'
-// import Vue from 'vue'
-// import App from './App'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import routes from './router'
+import App from './app'
 
-// new Vue({
-//   el: '#app',
-//   components: { App },
-//   template: '<App />'
-// })
+Vue.use(VueRouter)
 
-// import './a'
-// import './b'
-// import './c'
-require('./a')
-require('./b')
-require('./c')
+let router = new VueRouter({
+  routes
+})
+
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App />'
+})
