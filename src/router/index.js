@@ -1,7 +1,14 @@
-export default [
+export default[
   {
-    path: '/test',
-    name: 'test1',
-    component: () => import('views/test')
+    path: '/demo',
+    name: 'demo',
+    meta: { title: 'demo' },
+    component: () => import('views/demo/index')
+  },
+  {
+    path: '/map',
+    name: 'demoMap',
+    meta: { title: 'map' },
+    component: () => import('views/demo/map')
   }
 ]

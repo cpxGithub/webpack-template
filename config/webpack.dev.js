@@ -2,14 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-
 function resolve(str) {
   return path.resolve(__dirname, '..', str)
 }
 
 const config = {
   entry: {
-    app: './src/index.js'
+    app: './src/main.js'
   },
   output: {
     path: resolve('dist'),
@@ -21,7 +20,11 @@ const config = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'views': '@/views'
+      'views': '@/views',
+      'components': '@/components',
+      'api': '@/api',
+      'img': '@/assets/img',
+      'styles': '@/assets/styles'
     }
   },
   devServer: { // 配置webpack-dev-server
@@ -54,20 +57,32 @@ const config = {
       // },
       {
         test: /\.(less|css)$/,
-        include: [resolve('src')],
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader", // translates CSS into CommonJS
-          options: { importLoaders: 1 }
-        }, {
-          loader: "less-loader", // compiles Less to CSS
-          options: {
-            strictMath: true,
-            noIeCompat: true
-          }
-        }, 'postcss-loader']
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader', // postcss-loader必须在less-loader之前
+          'less-loader'
+        ]
       },
+      // {
+      //   test: /\.(less|css)$/,
+      //   include: [resolve('src')],
+      //   use: [
+      //     'vue-style-loader',
+      //     "style-loader", // creates style nodes from JS strings
+      //     {
+      //       loader: "css-loader", // translates CSS into CommonJS
+      //       options: { importLoaders: 1 }
+      //     }, {
+      //       loader: "less-loader", // compiles Less to CSS
+      //       options: {
+      //         strictMath: true,
+      //         noIeCompat: true
+      //       }
+      //     },
+      //     'postcss-loader'
+      //   ]
+      // },
       // {
       //   test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       //   include: [resolve('src')],
