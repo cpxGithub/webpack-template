@@ -1,6 +1,6 @@
 import axios from 'axios'
 axios.defaults.timeout = 100000 // 请求超时时间
-export default (type = 'get', url, params, baseUrl = '/wx') => {
+export default (type = 'get', url, params, baseUrl) => {
   return new Promise((resolve, reject) => {
     let config = {
       method: type,
@@ -17,7 +17,7 @@ export default (type = 'get', url, params, baseUrl = '/wx') => {
     }
     // 添加响应拦截器
     axios.interceptors.response.use((response) => {
-      if (response.data.success === false) window.sftoast.show({text: response.data.msg, type: 'text', width: 'auto'})
+      if (response.data.success === false) console.log(3)
       return response
     }, (error) => {
       return reject(error)
