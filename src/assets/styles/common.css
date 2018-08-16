@@ -65,7 +65,7 @@ body {
   -webkit-text-size-adjust: 100%;
   /* font-family: Helvetica Neue,'microsoft yahei',Helvetica,STHeiTi,Arial,sans-serif; */
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px; /* 由于使用rem布局，而vux ui框架的单位为em, 故在body处设置font-size为浏览器默认 */
+  font-size: 16px;
   overflow-x: hidden;
 }
 /* 清除浮动 */

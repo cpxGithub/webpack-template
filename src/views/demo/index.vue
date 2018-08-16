@@ -117,6 +117,9 @@ export default {
       ename: ''
     }
   },
+  updated (e) {
+    console.log(33, e)
+  },
   created () {
     setTimeout(() => {
       this.ename = 'line-echart'
