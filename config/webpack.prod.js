@@ -1,96 +1,34 @@
 const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 function resolve(str) {
   return path.resolve(__dirname, '..', str)
 }
 
-const config = {
-  entry: {
-    app: './src/index.js'
+const prodWepackConf = merge(baseWebpackConfig, {
+  performance: {
+    hints: "warning", // 枚举
+    maxAssetSize: 1000000,
+    maxEntrypointSize: 3000000
   },
+  mode: 'production',
   output: {
     path: resolve('dist'),
     chunkFilename: 'js/[id].[chunkhash].js',
     filename: 'js/[name].[chunkhash].js'
   },
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-    }
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: [resolve('src')],
-        loader: 'babel-loader'
-        // options: {
-        //   presets: ['@babel/preset-env']
-        // }
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      // {
-      //   test: /\.css$/,
-      //   exclude: '/node_modules/',
-      //   use: [
-      //     'style-loader',
-      //     { loader: 'css-loader', options: { importLoaders: 1 } },
-      //     'postcss-loader'
-      //   ]
-      // },
-      {
-        test: /\.(less|css)$/,
-        include: [resolve('src')],
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader", // translates CSS into CommonJS
-          options: { importLoaders: 1 }
-        }, {
-          loader: "less-loader", // compiles Less to CSS
-          options: {
-            strictMath: true,
-            noIeCompat: true
-          }
-        }, 'postcss-loader']
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        include: [resolve('src')],
-        loader: 'url-loader',
-        options: {
-          name: '[name][hash:8].[ext]',
-          limit: 8192,
-          outputPath: 'img'
-        }
-        // test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        // loader: 'url-loader',
-        // options: {
-        //   limit: 10000,
-        //   name: 'img/[name].[hash:8].[ext]'
-        // }
-      }
-    ]
-  },
   optimization: {
+    // runtimeChunk: {
+    //   name: 'manifest'
+    // },
     splitChunks: {
-      // name: 'common',
-      // filename: 'common.bundle.js',
-      // minChunks: 2,
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: "vendors",
-          chunks: "initial"
+          chunks: "initial" // initial-提取入口文件公共文件
         }
       }
     }
@@ -100,13 +38,8 @@ const config = {
       'dist'
     ], {
       root: path.join(__dirname, '../')
-    }),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      filename: 'index.html'
-    }),
-    new VueLoaderPlugin() // 添加vue-loader必须的插件
+    })
   ]
-}
+}) 
 
-module.exports = config
+module.exports = prodWepackConf

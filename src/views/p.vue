@@ -1,6 +1,6 @@
 <template>
   <div class="list-box">
-    <p class="list-b">660--{{name}}</p>
+    <p class="list-b">6--{{name}}</p>
   </div>
 </template>
 <script>

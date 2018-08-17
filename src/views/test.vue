@@ -10,7 +10,7 @@
       {{ results }}
     </div>
     <div class="box"></div>
-    <div v-bind="{ id: someProp, 'other-attr': otherProp }">222222222</div>
+    <div v-bind="{ id: someProp, 'other-attr': otherProp }">99222</div>
   </div>
 </template>
 <script>
