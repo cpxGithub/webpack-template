@@ -16,13 +16,13 @@ const prodWepackConf = merge(baseWebpackConfig, {
   mode: 'production',
   output: {
     path: resolve('dist'),
-    chunkFilename: 'js/[id].[chunkhash].js',
+    chunkFilename: 'js/[name].[chunkhash].js',
     filename: 'js/[name].[chunkhash].js'
   },
   optimization: {
-    // runtimeChunk: {
-    //   name: 'manifest'
-    // },
+    runtimeChunk: {
+      name: 'manifest'
+    },
     splitChunks: {
       cacheGroups: {
         commons: {

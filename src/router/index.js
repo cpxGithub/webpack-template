@@ -16,5 +16,11 @@ export default[
     name: 'test',
     meta: { title: 'test' },
     component: () => import('views/test')
+  },
+  {
+    path: '/shop/list',
+    name: 'shopList',
+    meta: { title: 'shopList' },
+    component: () => import('views/list')
   }
 ]

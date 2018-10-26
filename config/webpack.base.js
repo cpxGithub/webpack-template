@@ -24,14 +24,14 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: [resolve('src')],
-        loader: 'babel-loader'
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        include: [resolve('src')]
       },
       {
-        test: /\.vue$/,
-        include: [resolve('src')],
-        loader: 'vue-loader'
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src')]
       },
       {
         test: /\.(less|css)$/,

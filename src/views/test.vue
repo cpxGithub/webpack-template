@@ -45,6 +45,11 @@ export default {
   },
   mounted() {
     console.log(this.$el);
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(66)
+      }, 1000)
+    })
   }
 };
 </script>
