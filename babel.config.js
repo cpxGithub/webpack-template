@@ -1,9 +1,9 @@
 module.exports = {
   "presets": [
     ["@babel/preset-env", {
-      "targets": { "browsers": ["ie >=9"] },
+      "useBuiltIns": "usage",
       "modules": false,
-      "useBuiltIns": "usage"
+      // "debug": true
     }]
   ],
   "plugins": [

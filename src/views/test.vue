@@ -10,6 +10,9 @@
       {{ results }}
     </div>
     <div class="box"></div>
+    <router-link to="/upload">
+      <div>跳转</div>
+    </router-link>
     <div v-bind="{ id: someProp, 'other-attr': otherProp }">99222</div>
   </div>
 </template>
@@ -44,11 +47,15 @@ export default {
     }
   },
   mounted() {
+    let arr = [4, 5, 2]
+    arr.includes(4)
     console.log(this.$el);
     new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(66)
       }, 1000)
+    }).finally(res => {
+      console.log(333, res)
     })
   }
 };

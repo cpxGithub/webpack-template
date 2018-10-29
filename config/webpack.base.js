@@ -16,22 +16,20 @@ const config = {
       '@': resolve('src'),
       'views': '@/views',
       'components': '@/components',
-      'api': '@/api',
-      'img': '@/assets/img',
-      'styles': '@/assets/styles'
+      'img': '@/assets/img'
     }
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        include: [resolve('src')]
+        include: [resolve('src')],
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src')]
+        include: [resolve('src')],
+        loader: 'babel-loader'
       },
       {
         test: /\.(less|css)$/,
@@ -45,8 +43,8 @@ const config = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
         include: [resolve('src')],
+        loader: 'url-loader',
         options: {
           limit: 10000,
           name: 'img/[name].[hash:8].[ext]'

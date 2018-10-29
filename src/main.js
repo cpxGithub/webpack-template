@@ -1,13 +1,10 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-// import "@babel/polyfill";
+// webpack 动态加载（import）polyfill
+require('es6-promise').polyfill()
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router'
 import App from './App'
-import common from './util/common'
 import * as filters from './filters'
-import './util/rem'
 import './assets/styles/common.css'
 
 Vue.use(VueRouter)
@@ -31,7 +28,7 @@ const router = new VueRouter({
 // 设置title
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
-    common.setTitle(to.meta.title)
+    document.title = to.meta.title
   }
   next()
 })
