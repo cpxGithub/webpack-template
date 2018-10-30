@@ -16,7 +16,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // cheap-module-eval-source-map is faster for development
   devtool: 'cheap-module-eval-source-map',
   devServer: { // 配置webpack-dev-server
-    port: 9000,
+    port: process.env.HOST || 9000,
     hot: true,
     compress: true, // 开启gzip
     host: '0.0.0.0',

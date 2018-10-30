@@ -10,12 +10,12 @@
         </div>
         <input ref="input" type="file" name="image" accept="image/*" @change='handleInputChange' id="upload1">
       </div>
-      
       <img :src="urlImg" alt="" class="logo-img">
     </div>
   </div>
 </template>
 <script>
+import 'styles/upload.less'
 export default {
   data () {
     return {
@@ -44,34 +44,3 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-.upload-box {
-  position: relative;
-  margin: 10px;
-}
-.upload-img {
-  width: 60px;
-  height: 60px;
-  border: 1px solid #ccc;
-  text-align: center;
-  line-height: 60px;
-}
-#upload1 {
-  opacity: 0;
-  // font-size: 2rem;
-  width: 60px;
-  height: 60px;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-#upload {
-  display: none;
-}
-.logo-img {
-  display: block;
-  width: 300px;
-  height: 500px;
-}
-</style>

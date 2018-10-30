@@ -8,9 +8,3 @@ export default {
   props: ['name']
 }
 </script>
-
-<style scoped>
-.list-box {
-  border: 3px solid firebrick;
-}
-</style>

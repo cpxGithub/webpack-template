@@ -1,0 +1,73 @@
+.map-content {
+  width: 100%;
+  height: 100%;
+}
+.map-echart {
+  position: relative;
+  .map-content;
+  .btn-list {
+    position: absolute;
+    top: 45%;
+    right: 0.16rem;
+    z-index: 999;
+    border: 1px solid #9F9F9F;
+    border-radius: 5px;
+  }
+  .btn-item {
+    width: 0.68rem;
+    height: 0.68rem;
+    line-height: 0.68rem;
+    text-align: center;
+    color: #999;
+    font-size: 0.36rem;
+  }
+  .btn-reduce {
+    border-top: 1px solid #9F9F9F;
+  }
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8;
+}
+.map-demo {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.map-info-box {
+  width: 7rem;
+  height: 2rem;
+  box-sizing: border-box;
+  padding: 0.4rem 0.3rem;
+  .map-info-top {
+    display: flex;
+    justify-content: space-between;
+    color: #001744;
+    margin-bottom: 0.6rem;
+    .info-title {
+      font-size: 0.3rem;
+    }
+    .info-item {
+      margin-right: 0.4rem;
+    }
+    .warn-info {
+      font-size: 0.24rem;
+      color: #FF2943;
+    }
+  }
+  .map-info-b {
+    font-size: 0.24rem;
+    color: #A2AABA;
+    .num-info {
+      color: #3E7CFF;
+    }
+    .info-b-item {
+      margin-right: 0.6rem;
+    }
+  }
+}

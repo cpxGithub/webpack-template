@@ -9,6 +9,7 @@ import './assets/styles/common.css'
 require('es6-promise').polyfill()
 
 Vue.use(VueRouter)
+console.log(991, process.env.NODE_ENV)
 
 // 过滤器注册
 Object.keys(filters).forEach(key => {

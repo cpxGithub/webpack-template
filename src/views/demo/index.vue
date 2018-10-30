@@ -47,6 +47,7 @@
   </div>
 </template>
 <script>
+import 'styles/demo.less'
 import PieEchart from 'components/common/PieEchart'
 import LineEchart from 'components/common/LineEchart'
 export default {
@@ -172,31 +173,3 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-.demo-box {
-  background: #fff;
-}
-.pie-demo {
-  width: 6.9rem;
-  height: 4.9rem;
-  margin: 0 auto;
-}
-.demo-list {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 2rem;
-  .pie-demo1 {
-    flex: 1;
-  }
-}
-.demo-line {
-  width: 6.9rem;
-  height: 5.46rem;
-  margin: 20px auto;
-}
-.line-1 {
-  width: 96%;
-  height: 4.6rem;
-  margin: 0 auto;
-}
-</style>

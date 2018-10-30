@@ -154,32 +154,3 @@ export default {
   }
 }
 </script>
-<style lang="less">
-.map-content {
-  width: 100%;
-  height: 100%;
-}
-.map-echart {
-  position: relative;
-  .map-content;
-  .btn-list {
-    position: absolute;
-    top: 45%;
-    right: 0.16rem;
-    z-index: 999;
-    border: 1px solid #9F9F9F;
-    border-radius: 5px;
-  }
-  .btn-item {
-    width: 0.68rem;
-    height: 0.68rem;
-    line-height: 0.68rem;
-    text-align: center;
-    color: #999;
-    font-size: 0.36rem;
-  }
-  .btn-reduce {
-    border-top: 1px solid #9F9F9F;
-  }
-}
-</style>
