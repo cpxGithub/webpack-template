@@ -1,11 +1,12 @@
-// webpack 动态加载（import）polyfill
-require('es6-promise').polyfill()
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router'
 import App from './App'
 import * as filters from './filters'
 import './assets/styles/common.css'
+
+// webpack 动态加载（import）polyfill
+require('es6-promise').polyfill()
 
 Vue.use(VueRouter)
 

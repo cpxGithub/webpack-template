@@ -22,6 +22,16 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        enforce: "pre",
+        include: [resolve('src')],
+        loader: "eslint-loader",
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: process.env.NODE_ENV === 'development'
+        }
+      },
+      {
         test: /\.vue$/,
         include: [resolve('src')],
         loader: 'vue-loader'
