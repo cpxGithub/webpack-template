@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 function resolve(str) {
@@ -50,6 +51,9 @@ const prodWepackConf = merge(baseWebpackConfig, {
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash].css"
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessorOptions: { safe: true }
     })
   ]
 })

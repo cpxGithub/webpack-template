@@ -10,7 +10,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   output: {
     path: resolve('dist'),
-    // chunkFilename: '[id].js',
+    chunkFilename: '[id].js',
     filename: '[name].js'
   },
   // cheap-module-eval-source-map is faster for development

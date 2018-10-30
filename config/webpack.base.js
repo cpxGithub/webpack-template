@@ -57,7 +57,7 @@ const config = {
               publicPath: '../'
             }
           },
-          'css-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
           'postcss-loader', // postcss-loader必须在less-loader之前
           'less-loader'
         ]
