@@ -15,7 +15,6 @@ console.log(991, process.env.NODE_ENV)
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
-
 const router = new VueRouter({
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
