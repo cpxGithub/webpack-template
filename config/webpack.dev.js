@@ -30,6 +30,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         { from: /.*/, to: path.posix.join('/', 'index.html') },
       ],
     },
+    proxy: {
+      '/net': {
+        target: 'http://localhost:3001', // 本地开发
+        changeOrigin: true
+      }
+    },
     quiet: true // 关闭webpack警告与错误提示
   },
   plugins: [
@@ -42,11 +48,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         if (severity !== 'error') {
           return
         }
-        const filename = error.file && error.file.split('!').pop()
+        const error = errors[0]
         notifier.notify({
           title: "Project",
           message: severity + ': ' + error.name,
-          subtitle: filename || '',
+          subtitle: error.file || '',
           icon: path.join(__dirname, 'icon.png')
         })
       }

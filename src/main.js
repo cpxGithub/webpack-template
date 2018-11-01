@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import routes from './router'
 import App from './App'
 import * as filters from './filters'
 import './assets/styles/common.css'
 
+Vue.use(ElementUI)
+
 // webpack 动态加载（import）polyfill
 require('es6-promise').polyfill()
 
 Vue.use(VueRouter)
-console.log(991, process.env.NODE_ENV)
 
 // 过滤器注册
 Object.keys(filters).forEach(key => {

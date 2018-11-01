@@ -3,7 +3,7 @@ const path = require('path')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -13,33 +13,37 @@ function resolve(str) {
 
 const prodWepackConf = merge(baseWebpackConfig, {
   performance: {
-    hints: "warning", // 枚举
-    maxAssetSize: 1000000,
-    maxEntrypointSize: 3000000
+    hints: 'warning', // 枚举
+    maxAssetSize: 819200,
+    maxEntrypointSize: 819200
   },
   mode: 'production',
   output: {
     path: resolve('dist'),
-    chunkFilename: 'js/[name].[chunkhash].js',
-    filename: 'js/[name].[chunkhash].js'
+    chunkFilename: 'js/[name].[contenthash].js',
+    filename: 'js/[name].[contenthash].js'
   },
   optimization: {
-    runtimeChunk: {
-      name: 'manifest'
-    },
+    // runtimeChunk: {
+    //   name: 'manifest'
+    // },
+    // nodeEnv: 'production',
+    moduleIds: 'hashed',
+    namedChunks: true,
     splitChunks: {
       cacheGroups: {
-        styles: {
-          name: 'app-styles',
-          test: /\.(less|css)$/,
-          chunks: 'all',
-          enforce: true
-        },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "initial", // initial-提取入口文件公共文件
+          name: 'vendors',
+          chunks: 'initial', // initial-提取入口文件公共文件chunks: 'initial', // initial-提取入口文件公共文件
           priority: 1,
+          reuseExistingChunk: true
+        },
+        elementUI: {
+          name: 'elementUI', // 单独将 elementUI 拆包
+          priority: 3,
+          chunks: 'initial',
+          test: /[\\/]node_modules[\\/]element-ui[\\/]/,
           reuseExistingChunk: true
         }
       }
@@ -50,7 +54,8 @@ const prodWepackConf = merge(baseWebpackConfig, {
       root: path.join(__dirname, '../')
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash].css"
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'js/[name].[contenthash].css'
     }),
     new OptimizeCssAssetsPlugin({
       cssProcessorOptions: { safe: true }
@@ -63,4 +68,5 @@ if (process.env.npm_config_report) {
     new BundleAnalyzerPlugin()
   )
 }
+
 module.exports = prodWepackConf
