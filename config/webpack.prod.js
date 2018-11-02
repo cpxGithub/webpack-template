@@ -27,7 +27,7 @@ const prodWepackConf = merge(baseWebpackConfig, {
     // runtimeChunk: {
     //   name: 'manifest'
     // },
-    // nodeEnv: 'production',
+    nodeEnv: 'production',
     moduleIds: 'hashed',
     namedChunks: true,
     splitChunks: {
@@ -63,6 +63,7 @@ const prodWepackConf = merge(baseWebpackConfig, {
   ]
 })
 
+// 使用npm run pord/build --report 开启webpack打包资源分析
 if (process.env.npm_config_report) {
   prodWepackConf.plugins.push(
     new BundleAnalyzerPlugin()

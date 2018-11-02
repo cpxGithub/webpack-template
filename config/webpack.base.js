@@ -33,6 +33,25 @@ function resolve(str) {
   return path.resolve(__dirname, '..', str)
 }
 
+let htmlOptions = {
+  template: 'index.html',
+  filename: 'index.html'
+}
+
+if (!devMode) { // 生产环境下压缩html
+  htmlOptions = {
+    ...htmlOptions,
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true
+    }
+  }
+}
+
 const config = {
   entry: {
     app: './src/main.js'
@@ -121,11 +140,8 @@ const config = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      filename: 'index.html'
-    }),
-    new VueLoaderPlugin(), // 添加vue-loader必须的插件
+    new HtmlWebpackPlugin(htmlOptions),
+    new VueLoaderPlugin() // 添加vue-loader必须的插件
   ]
 }
 
