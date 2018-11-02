@@ -71,16 +71,16 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|vue)$/,
-      //   enforce: "pre",
-      //   include: [resolve('src')],
-      //   loader: "eslint-loader",
-      //   options: {
-      //     formatter: require('eslint-friendly-formatter'),
-      //     emitWarning: devMode
-      //   }
-      // },
+      {
+        test: /\.(js|vue)$/,
+        enforce: "pre",
+        include: [resolve('src')],
+        loader: "eslint-loader",
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: devMode
+        }
+      },
       {
         test: /\.vue$/,
         include: [resolve('src')],

@@ -27,7 +27,7 @@ const prodWepackConf = merge(baseWebpackConfig, {
     // runtimeChunk: {
     //   name: 'manifest'
     // },
-    nodeEnv: 'production',
+    // nodeEnv: 'production',
     moduleIds: 'hashed',
     namedChunks: true,
     splitChunks: {
@@ -55,7 +55,7 @@ const prodWepackConf = merge(baseWebpackConfig, {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
-      chunkFilename: 'js/[name].[contenthash].css'
+      chunkFilename: 'css/[name].[contenthash].css'
     }),
     new OptimizeCssAssetsPlugin({
       cssProcessorOptions: { safe: true }
